@@ -18,6 +18,10 @@
 - Note: Never write hook inside a function
 - Login and see if the data is coming properly in the store
 - Refactor the code to add constants file + create a components folder
+- You should not be access routes without login
+- If token is not present, redirect user to login page
+- Get the feed and add the feed in the store
+- Build the user card on feed
 
 # Body
 - Navbar
