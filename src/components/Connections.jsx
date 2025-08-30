@@ -28,7 +28,7 @@ const Connections = () => {
     if (!connections) return;
 
     if (connections.length == 0) return <h1>No connections found</h1>
-    console.log(connections);
+    // console.log(connections);
 
     return (
         <div className='text-center my-10'>
@@ -37,10 +37,10 @@ const Connections = () => {
                 <div className='w-1/2'>
                     {connections.map((connection) => {
 
-                        const { firstName, lastName, photoUrl, about, age, gender } = connection;
+                        const {_id, firstName, lastName, photoUrl, about, age, gender } = connection;
 
                         return (
-                            <div className='flex m-4 p-4 rounded-lg bg-base-300'>
+                            <div key={_id} className='flex m-4 p-4 rounded-lg bg-base-300'>
                                 <div>
                                     <img alt='photo' src={photoUrl} className='w-20 h-20 rounded-full' />
                                 </div>

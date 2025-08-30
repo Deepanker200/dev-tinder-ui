@@ -25,6 +25,14 @@
 - Edit Profile Feature
 - Show Toast message on saving of profile
 - See all my connections
+- New Page- See all my connections
+- New Page- See all my connection requests
+- Feature- Accept/Reject Connection Request
+
+Remaining:
+- Send/Ignore the connection user card from feed
+- Signup New User
+- E2E Testing 
 
 # Body
 - Navbar
