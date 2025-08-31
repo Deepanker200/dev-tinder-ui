@@ -9,13 +9,15 @@ const EditProfile = ({ user }) => {
 
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
-    const [age, setAge] = useState(user.age);
-    const [about, setAbout] = useState(user.about);
-    const [gender, setGender] = useState(user.gender);
+    const [age, setAge] = useState(user.age || "");
+    const [about, setAbout] = useState(user.about || "");
+    const [gender, setGender] = useState(user.gender || "");
+    const [skills, setSkills] = useState(user.skills || "");
+    const [isEdit, setIsEdit] = useState(true);
     const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
     const [error, setError] = useState("")
     const dispatch = useDispatch();
-    const [showToast,setShowToast]=useState(false);
+    const [showToast, setShowToast] = useState(false);
 
     const saveProfile = async () => {
         //Clear Errors
@@ -23,15 +25,15 @@ const EditProfile = ({ user }) => {
 
         try {
             const res = await axios.patch(BASE_URL + "/profile/edit", {
-                firstName, lastName, photoUrl, age, gender, about
+                firstName, lastName, photoUrl, age, gender, about, skills
             }, {
                 withCredentials: true
             });
             dispatch(addUser(res?.data?.data))
             setShowToast(true);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setShowToast(false)
-            },3000)
+            }, 3000)
         } catch (err) {
             setError(err.response.data);
         }
@@ -96,6 +98,16 @@ const EditProfile = ({ user }) => {
 
                             <label className="form-control w-full max-w-xs my-2">
                                 <div className="label my-1">
+                                    <span className="label-text">Skills</span>
+                                </div>
+                                <input type="text"
+                                    value={skills}
+                                    onChange={(e) => { setSkills(e.target.value) }}
+                                    className="input input-bordered w-full max-w-xs" />
+                            </label>
+
+                            <label className="form-control w-full max-w-xs my-2">
+                                <div className="label my-1">
                                     <span className="label-text">Photo</span>
                                 </div>
                                 <input type="text"
@@ -112,7 +124,7 @@ const EditProfile = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <UserCard user={{ firstName, lastName, photoUrl, age, gender, about }} />
+                <UserCard user={{ firstName, lastName, photoUrl, age, gender, about, skills ,isEdit }} />
             </div>
             {showToast && <div className="toast toast-top toast-center">
                 <div className="alert alert-success">
