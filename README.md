@@ -84,3 +84,12 @@
             proxy_set_header Host $host;
             proxy_cache_bypass $http_upgrade;
         }
+
+# Adding a custom Domain name
+
+- purchased domain name from godaddy
+- signup on cloudflare & add a new domain name
+- change the nameservers on godaddy and point it to cloudflare
+- wait for sometime till your nameservers are updated ~15 minutes
+- DNS record: A devtinder.in our port given by AWS
+- Enable SSL for website 
