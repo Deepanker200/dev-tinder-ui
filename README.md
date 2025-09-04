@@ -93,3 +93,16 @@
 - wait for sometime till your nameservers are updated ~15 minutes
 - DNS record: A devtinder.in our port given by AWS
 - Enable SSL for website 
+
+# Sending Emails via SES
+
+- Create an IAM user
+    - Give access to AmazonSESFullAccess
+- Amazon SES: Create an Identity
+- Verify an email address
+- Code Example https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+- Access Credentials should be created in IAM under SecurityCredentials Tab
+- Add the Credentials to the env file
+- Write code for sesClient(use credentials here)
+- Write code for Sending email address(using github docs)
+- Make the email dynamic by passing more params to the run function
