@@ -106,3 +106,21 @@
 - Write code for sesClient(use credentials here)
 - Write code for Sending email address(using github docs)
 - Make the email dynamic by passing more params to the run function
+
+# Scheduling cron jobs in NodeJS
+    - Installing node-cron
+    - Learning about cron expressions syntax- crontab.guru
+    - Schedule a job
+    - date-fns library
+    - Find all the unique email Id who have got connection request in previous day
+    - Send Email
+    - Have to create send e-mail template
+    
+    - Explore queue mechanism to send bulk emails- for lakhs of users
+    - Amazon SES Bulk email
+    - Bee-queue and Bull npm package for queue in Nodejs
+
+# Razorpay Payment Gateway Integration
+    - Sign up on Razorpay & complete KYC
+    - Created a UI for premium page
+    - Creating an API for backend
