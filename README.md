@@ -123,4 +123,15 @@
 # Razorpay Payment Gateway Integration
     - Sign up on Razorpay & complete KYC
     - Created a UI for premium page
-    - Creating an API for backend
+    - Creating an API for create order in backend
+    - Added my key and secret in env file
+    - Initialized Razorpay in utils
+    - Creating order on Razorpay
+    - Created Schema and model
+    - Saved the order in payments collection
+    - Make the API Dynamic
+    - Setup webhooks in Razorpay
+    - Ref - https://github.com/razorpay/razorpay-node/tree/master/documents
+    - Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-razorpay-payment-gateway
+    - Ref - https://razorpay.com/docs/webhooks/validate-test/
+    - Ref - https://razorpay.com/docs/webhooks/payloads/payments/
