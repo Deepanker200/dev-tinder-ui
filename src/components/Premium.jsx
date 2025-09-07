@@ -4,7 +4,7 @@ import { BASE_URL } from "../utils/constants";
 
 const Premium = () => {
 
-    const handleByClick = async (type) => {
+    const handleBuyClick = async (type) => {
         const order = await axios.post(BASE_URL + "/payment/create",
             {
                 membershipType: type,
@@ -49,7 +49,7 @@ const Premium = () => {
                         <li>- Blue Tick</li>
                         <li>- 3 Months</li>
                     </ul>
-                    <button onClick={() => handleByClick("silver")} className='btn btn-secondary'>Buy Silver</button>
+                    <button onClick={() => handleBuyClick("silver")} className='btn btn-secondary'>Buy Silver</button>
                 </div>
 
                 <div className="divider divider-horizontal">OR</div>
@@ -62,7 +62,7 @@ const Premium = () => {
                         <li>- Blue Tick</li>
                         <li>- 6 Months</li>
                     </ul>
-                    <button onClick={() => handleByClick("gold")} className='btn btn-primary'>Buy Gold</button>
+                    <button onClick={() => handleBuyClick("gold")} className='btn btn-primary'>Buy Gold</button>
                 </div>
             </div>
         </div>
