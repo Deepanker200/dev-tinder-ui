@@ -11,7 +11,7 @@
 - Create a Footer
 - Create a Login Page
 - Install axios
-- CORS- Install CORS in backend => add middleware to frontend with configurations: origin, credentials:truw
+- CORS- Install CORS in backend => add middleware to frontend with configurations: origin, credentials:true
 - Whenever making API call so pass=>{withCredentials:true} for axios
 - Install react-redux + @reduxjs/toolkit
 - configureStore => Provider => createSlice=> add reducer to store=> susbcribe to store
@@ -137,3 +137,6 @@
     - Ref - https://razorpay.com/docs/webhooks/payloads/payments/
 
 # Real Time Chat using Websocket(Socket.io)
+    - Build the UI for a chat window on /chat/:targetUserId
+    - Setup socket.io in Backend
+    - npm install socket.io
