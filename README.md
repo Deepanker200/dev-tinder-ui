@@ -140,3 +140,7 @@
     - Build the UI for a chat window on /chat/:targetUserId
     - Setup socket.io in Backend
     - npm install socket.io
+    - Setup Frontend socket-io-client
+    - Initialize the chat
+    - createSocketConnection
+    - Listen to events
