@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock, faUser, faUserSecret } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
 
@@ -56,6 +58,7 @@ const Login = () => {
         <div className='flex justify-center my-10'>
             <div className="card card-border bg-base-300 w-96">
                 <div className="card-body">
+                    <h1 className='text-2xl text-center'>Welcome To DevTinder</h1>
                     <h2 className="card-title justify-center">{isLoginForm ? "Login" : "Signup"}</h2>
                     {!isLoginForm &&
                         <>
@@ -63,20 +66,30 @@ const Login = () => {
                                 <div className="label my-1">
                                     <span className="label-text">First Name</span>
                                 </div>
-                                <input type="text"
-                                    value={firstName}
-                                    onChange={(e) => { setFirstName(e.target.value) }}
-                                    className="input input-bordered w-full max-w-xs" />
+                                <div className='flex border bg-black-900 rounded-md'>
+                                    <div className='px-3 flex justify-center items-center'>
+                                        <FontAwesomeIcon icon={faUser} />
+                                    </div>
+                                    <input type="text"
+                                        value={firstName}
+                                        onChange={(e) => { setFirstName(e.target.value) }}
+                                        className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-0" />
+                                </div>
                             </label>
 
                             <label className="form-control w-full max-w-xs my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Last Name</span>
                                 </div>
-                                <input type="text"
-                                    value={lastName}
-                                    onChange={(e) => { setLastName(e.target.value) }}
-                                    className="input input-bordered w-full max-w-xs" />
+                                <div className='flex border bg-black-900 rounded-md'>
+                                    <div className='px-3 flex justify-center items-center'>
+                                        <FontAwesomeIcon icon={faUserSecret} />
+                                    </div>
+                                    <input type="text"
+                                        value={lastName}
+                                        onChange={(e) => { setLastName(e.target.value) }}
+                                        className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-0" />
+                                </div>
                             </label>
                         </>
                     }
@@ -84,20 +97,30 @@ const Login = () => {
                         <div className="label my-1">
                             <span className="label-text">Email ID</span>
                         </div>
-                        <input type="text"
-                            value={emailId}
-                            onChange={(e) => { setEmailId(e.target.value) }}
-                            className="input input-bordered w-full max-w-xs" />
+                        <div className='flex border bg-black-900 rounded-md'>
+                            <div className='px-3 flex justify-center items-center'>
+                                <FontAwesomeIcon icon={faEnvelope} />
+                            </div>
+                            <input type="text"
+                                value={emailId}
+                                onChange={(e) => { setEmailId(e.target.value) }}
+                                className="input w-full max-w-xs hover:no-underline focus:outline-none focus:ring-0" />
+                        </div>
                     </label>
 
                     <label className="form-control w-full max-w-xs my-2">
                         <div className="label my-1">
                             <span className="label-text">Password</span>
                         </div>
-                        <input type="password"
-                            value={password}
-                            onChange={(e) => { setPassword(e.target.value) }}
-                            className="input input-bordered w-full max-w-xs" />
+                        <div className='flex border bg-black-900 rounded-md'>
+                            <div className='px-3 flex justify-center items-center'>
+                                <FontAwesomeIcon icon={faLock} />
+                            </div>
+                            <input type="password"
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value) }}
+                                className="input w-full max-w-xs  focus:outline-none focus:ring-0" />
+                        </div>
                     </label>
 
                     <p className='text-red-500'>{error}</p>
