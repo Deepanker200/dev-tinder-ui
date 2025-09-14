@@ -1,12 +1,14 @@
 import axios from 'axios';
-import React from 'react'
+import React, { useState } from 'react'
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { removeUserFromFeed } from "../utils/feedSlice"
 
 const UserCard = ({ user }) => {
     const { _id, firstName, lastName, photoUrl, age, gender, about, skills, isEdit } = user;
-    
+    const [showToast, setShowToast] = useState(false);
+    const [messageToast, setMessageToast] = useState()
+
     const dispatch = useDispatch();
     const handleSendRequest = async (status, userId) => {
         try {
@@ -15,14 +17,34 @@ const UserCard = ({ user }) => {
                 withCredentials: true
             })
             dispatch(removeUserFromFeed(userId))
-        } catch (err) {
 
-        }        
+            if (status === "interested") {
+                setMessageToast(true);
+            }
+            else {
+                setMessageToast(false)
+            }
+            setShowToast(true);
+
+
+            setTimeout(() => {
+                setShowToast(false)
+            }, 3000)
+        } catch (err) {
+            console.err(err)
+        }
     }
 
     return (
-        <div>
-            <div className="card bg-base-300 w-96 shadow-sm">
+        <>
+            {showToast &&
+                <div className="toast toast-top toast-end mt-14 z-10">
+                    <div className={"alert " + (messageToast ? "alert-success" : "bg-red-600")}>
+                        <span>{messageToast ? "Request Sent Successfully" : "Ignored Successfully"}</span>
+                    </div>
+                </div>
+            }
+            <div className="card bg-base-300 w-80 md:w-96 shadow-sm mx-10">
                 <figure>
                     <img
                         src={photoUrl}
@@ -33,13 +55,13 @@ const UserCard = ({ user }) => {
                     {age && gender && <p>{age + ", " + gender}</p>}
                     <p className='break-words'>{about}</p>
                     <p>{skills}</p>
-                    {isEdit ?"": <div className="card-actions justify-center my-4">
+                    {isEdit ? "" : <div className="card-actions justify-center my-4">
                         <button className="btn btn-primary" onClick={() => handleSendRequest("ignored", _id)}>Ignore</button>
                         <button className="btn btn-secondary" onClick={() => handleSendRequest("interested", _id)}>Send Request</button>
                     </div>}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

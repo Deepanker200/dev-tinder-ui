@@ -20,7 +20,7 @@ const Connections = () => {
         } catch (err) {
             //Handle Error Case
             console.log(err);
-            
+
         }
     }
 
@@ -30,28 +30,38 @@ const Connections = () => {
 
     if (!connections) return;
 
-    if (connections.length == 0) return <h1>No connections found</h1>
+    if (connections.length == 0) return (
+        <>
+            <div className='flex justify-center items-center my-40'>
+                <div className='text-center flex flex-col gap-8'>
+                    <h1 className='text-2xl md:text-4xl text-center font-bold'>OOPS! <br />No connections found</h1>
+                    <Link to="/">
+                        <button className='btn btn-secondary'>Search for Connections </button>
+                    </Link>
+                </div>
+            </div>
+        </>
+    )
     // console.log(connections);
 
     return (
         <div className='text-center my-10'>
             <h1 className='text-bold text-3xl text-white'>Connections</h1>
-            <div className='flex justify-center'>
-                <div className='w-1/2'>
+           
                     {connections.map((connection) => {
 
                         const { _id, firstName, lastName, photoUrl, about, age, gender } = connection;
 
                         return (
-                            <div key={_id} className='flex m-4 p-4 rounded-lg bg-base-300'>
+                    <div key={_id} className='flex justify-between items-center p-2 md:p-4 rounded-lg bg-base-300 w-[350px] md:w-2/3 mx-auto my-10'>
                                 <div>
-                                    <img alt='photo' src={photoUrl} className='w-20 h-20 rounded-full' />
+                                    <img alt='photo' src={photoUrl} className='max-w-full h-auto md:w-20 md:h-20 rounded-full' />
                                 </div>
 
                                 <div className='text-start mx-4'>
                                     <h2 className='font-bold text-xl'>{firstName + " " + lastName}</h2>
                                     {age && gender && <p>{age + " " + gender}</p>}
-                                    <p>{about}</p>
+                                    <p className='w-[100px] md:w-[600px] line-clamp-3'>{about}</p>
                                 </div>
                                 <Link to={"/chat/" + _id}>
                                     <button className='btn btn-primary'>Chat</button>
@@ -59,8 +69,6 @@ const Connections = () => {
                             </div>
                         )
                     })}
-                </div>
-            </div>
         </div>
     )
 }

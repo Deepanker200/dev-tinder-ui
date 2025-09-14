@@ -43,25 +43,25 @@ const Requests = () => {
 
     return (
         <div className='text-center my-10'>
-            <h1 className='text-bold text-3xl text-white'>Connection Requests</h1>
+            <h1 className='text-bold text-2xl md:text-4xl text-white mb-6 font-bold'>Connection Requests</h1>
             {requests.map((request) => {
 
                 const { _id, firstName, lastName, photoUrl, about, age, gender } = request.fromUserId;
 
                 return (
-                    <div key={_id} className='flex justify-between items-center m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto'>
+                    <div key={_id} className='flex justify-between items-center p-2 md:p-4 rounded-lg bg-base-300 w-[350px] md:w-2/3 mx-auto my-10'>
                         <div>
-                            <img alt='photo' src={photoUrl} className='w-20 h-20 rounded-full' />
+                            <img alt='photo' src={photoUrl} className='max-w-full h-auto md:w-20 md:h-20 rounded-full' />
                         </div>
 
                         <div className='text-start mx-4'>
-                            <h2 className='font-bold text-xl'>{firstName + " " + lastName}</h2>
+                            <h2 className='font-bold md:text-xl'>{firstName + " " + lastName}</h2>
                             {age && gender && <p>{age + " " + gender}</p>}
-                            <p>{about}</p>
+                            <p className='w-[100px] md:w-[600px] line-clamp-3'>{about}</p>
                         </div>
-                        <div>
-                            <button className="btn btn-primary mx-2" onClick={() => reviewRequest("rejected", request._id)}>Reject</button>
-                            <button className="btn btn-secondary mx-2" onClick={() => reviewRequest("accepted", request._id)}>Accept</button>
+                        <div className='flex gap-2'>
+                            <button className="btn btn-primary btn-sm md:btn-md" onClick={() => reviewRequest("rejected", request._id)}>Reject</button>
+                            <button className="btn btn-secondary btn-sm md:btn-md" onClick={() => reviewRequest("accepted", request._id)}>Accept</button>
                         </div>
                     </div>
                 )

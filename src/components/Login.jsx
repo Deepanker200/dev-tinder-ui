@@ -54,12 +54,11 @@ const Login = () => {
         }
     }
 
-    return (
+    return (<>
         <div className='flex justify-center my-10'>
             <div className="card card-border bg-base-300 w-96">
                 <div className="card-body">
-                    <h1 className='text-2xl text-center'>Welcome To DevTinder</h1>
-                    <h2 className="card-title justify-center">{isLoginForm ? "Login" : "Signup"}</h2>
+                    <h2 className="card-title justify-center">{isLoginForm ? "Welcome Back 👋" : "Create an Account"}</h2>
                     {!isLoginForm &&
                         <>
                             <label className="form-control w-full max-w-xs my-2">
@@ -128,10 +127,11 @@ const Login = () => {
                         <button className="btn btn-primary" onClick={isLoginForm ? handleLogin : handleSignUp}>{isLoginForm ? "Login" : "Signup"}</button>
                     </div>
 
-                    <p className='cursor-pointer m-auto py-4' onClick={() => setIsLoginForm(!isLoginForm)}>{isLoginForm ? "New User?" : "Existing User? Login Here!"}</p>
+                    <p className='cursor-pointer m-auto py-4' onClick={() => setIsLoginForm(!isLoginForm)}>{isLoginForm ? "New User? Create an account" : "Already have an account? Login here"}</p>
                 </div>
             </div>
         </div>
+    </>
     )
 }
 
