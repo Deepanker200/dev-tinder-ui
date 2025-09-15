@@ -41,12 +41,12 @@ const EditProfile = ({ user }) => {
 
     return (
         <>
-            <div className='flex justify-center my-10'>
-                <div className='flex justify-center mx-10'>
+            <div className='flex flex-col md:flex md:flex-row justify-center my-10'>
+                <div className='order-2 md:order-1 flex justify-center mx-10'>
                     <div className="card card-border bg-base-300 w-96">
                         <div className="card-body">
                             <h2 className="card-title justify-center">Edit Profile</h2>
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">First Name</span>
                                 </div>
@@ -56,7 +56,7 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs" />
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Last Name</span>
                                 </div>
@@ -66,7 +66,7 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs" />
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Age</span>
                                 </div>
@@ -76,17 +76,27 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs" />
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Gender</span>
                                 </div>
-                                <input type="text"
+                                {/* <input type="text"
                                     value={gender}
                                     onChange={(e) => { setGender(e.target.value) }}
-                                    className="input input-bordered w-full max-w-xs" />
+                                    className="input input-bordered w-full max-w-xs" /> */}
+                            
+
+                            <select value={gender}
+                                onChange={(e) => { setGender(e.target.value) }}
+                                className="select">
+                                <option disabled={true}>Choose Gender</option>
+                                <option>male</option>
+                                <option>female</option>
+                                <option>others</option>
+                            </select>
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">About</span>
                                 </div>
@@ -96,7 +106,7 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs" />
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Skills</span>
                                 </div>
@@ -106,7 +116,7 @@ const EditProfile = ({ user }) => {
                                     className="input input-bordered w-full max-w-xs" />
                             </label>
 
-                            <label className="form-control w-full max-w-xs my-2">
+                            <label className="form-control w-full max-w-xs my-1 md:my-2">
                                 <div className="label my-1">
                                     <span className="label-text">Photo</span>
                                 </div>
@@ -124,7 +134,9 @@ const EditProfile = ({ user }) => {
                         </div>
                     </div>
                 </div>
-                <UserCard user={{ firstName, lastName, photoUrl, age, gender, about, skills ,isEdit }} />
+                <div className="order-1 md:order-2 mb-5 md:mb-0">
+                <UserCard user={{ firstName, lastName, photoUrl, age, gender, about, skills, isEdit }} />
+                </div>
             </div>
             {showToast && <div className="toast toast-top toast-center">
                 <div className="alert alert-success">

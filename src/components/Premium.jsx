@@ -60,8 +60,8 @@ const Premium = () => {
         "You're are already a premium user"
     ) : (
         <div className='m-10'>
-            <div className="flex w-full">
-                <div className="card bg-base-300 rounded-box h-80 grid grow place-items-center p-10">
+            <div className="block md:flex w-full">
+                <div className="card bg-base-300 rounded-box h-80 grid grow place-items-center p-10 gap-3">
                     <h1 className='font-bold text-3xl'>Silver Membership</h1>
                     <ul>
                         <li>- Chat with other people</li>
@@ -72,9 +72,9 @@ const Premium = () => {
                     <button onClick={() => handleBuyClick("silver")} className='btn btn-secondary'>Buy Silver</button>
                 </div>
 
-                <div className="divider divider-horizontal">OR</div>
+                <div className="divider md:divider-horizontal text-center">OR</div>
 
-                <div className="card bg-base-300 rounded-box grid grow place-items-center p-10">
+                <div className="card bg-base-300 rounded-box grid grow place-items-center p-10 gap-3">
                     <h1 className='font-bold text-3xl'>Gold Membership</h1>
                     <ul>
                         <li>- Chat with other people</li>

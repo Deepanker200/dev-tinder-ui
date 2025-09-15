@@ -39,7 +39,7 @@ const Requests = () => {
 
     if (!requests) return;
 
-    if (requests.length == 0) return <h1 className='text-bold text-xl text-white text-center my-10'>No connections found</h1>
+    if (requests.length == 0) return <h1 className='text-2xl md:text-4xl text-center font-bold my-40'>No New Request found!</h1>
 
     return (
         <div className='text-center my-10'>

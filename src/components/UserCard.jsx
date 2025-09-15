@@ -44,7 +44,7 @@ const UserCard = ({ user }) => {
                     </div>
                 </div>
             }
-            <div className="card bg-base-300 w-80 md:w-96 shadow-sm mx-10">
+            <div className="card bg-base-300 w-72 md:w-96 shadow-sm mx-auto md:mx-10">
                 <figure>
                     <img
                         src={photoUrl}

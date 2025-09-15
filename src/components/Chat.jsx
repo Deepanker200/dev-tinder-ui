@@ -22,12 +22,13 @@ const Chat = () => {
         console.log(chat.data.messages);
         const chatMessages = chat?.data?.messages.map(msg => {
 
-            const { senderId, text } = msg;
+            const { senderId, text, createdAt } = msg;
 
             return {
                 firstName: senderId?.firstName,
                 lastName: senderId?.lastName,
-                text
+                text,
+                createdAt
             }
         })
         setMessages(chatMessages)
@@ -44,7 +45,7 @@ const Chat = () => {
         const socket = createSocketConnection();      //It is an object
 
         //As soon as the page loaded the socket connection is made and joinChat event is emitted
-        socket.emit("joinChat", { firstName: user.firstName, userId, targetUserId })  //same name of the event as that in backend
+        socket.emit("joinChat", { firstName: user.firstName, userId, targetUserId, createdAt: user.createdAt })  //same name of the event as that in backend
 
         socket.on("messageReceived", ({ firstName, lastName, text }) => {
             console.log(firstName + " " + text);
@@ -67,6 +68,22 @@ const Chat = () => {
         setNewMessage("")
     }
 
+
+
+    const formatToIST = (utcDate) => {
+  if (!utcDate) return "";
+  const date = new Date(utcDate);
+  return date.toLocaleString("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour12: true,   // AM/PM format
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+};
+
     return (
         <div className='w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col'>
             <h1 className='p-5 border-b border-gray-600'>Chat</h1>
@@ -78,15 +95,15 @@ const Chat = () => {
                         }>
                             <div className="chat-header">
                                 {`${msg.firstName} ${msg.lastName}`}
-                                <time className="text-xs opacity-50">2 hour ago</time>
+                                <time className="text-xs opacity-50">{formatToIST(msg.createdAt)}</time>
                             </div>
-                            <div className="chat-bubble">{msg.text}</div>
+                            <div className={"text-white chat-bubble " + (user.firstName === msg.firstName ? "bg-green-900" : "chat-bubble-neutral")}>{msg.text}</div>
                             <div className="chat-footer opacity-50">Seen</div>
                         </div>
                     );
                 })}
             </div>
-            <div className='p-5 border-t border-gray-600 flex items-center gap-2'>
+            <div className='p-1 md:p-5 border-t border-gray-600 flex items-center gap-2'>
                 <input
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
