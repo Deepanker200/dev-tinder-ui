@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className="flex gap-2">
         {user && (
           <div className='flex items-center'>
-            <div className='form-control'> <p>Welcome, {user.firstName}</p></div>
+            <div className='form-control'> <p>Welcome, {(user.isPremium)?`${user.firstName}✅`:`${user.firstName}`}</p></div>
             <div className="dropdown dropdown-end mx-5">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
