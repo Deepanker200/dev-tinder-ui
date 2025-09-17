@@ -144,3 +144,9 @@
     - Initialize the chat
     - createSocketConnection
     - Listen to events
+
+# Features to be added
+ - Search Profile
+ - Better UI/UX
+ - Reset Password Route
+ - Home Page
