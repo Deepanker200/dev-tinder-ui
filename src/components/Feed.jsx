@@ -4,10 +4,12 @@ import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../utils/feedSlice'
 import UserCard from "./UserCard";
+import AboutPage from './AboutPage'
 
 const Feed = () => {
 
   const feed=useSelector((store)=>store.feed);
+  const userData=useSelector((store)=>store.user);
   const dispatch = useDispatch();
 
   const getFeed = async () => {
@@ -23,8 +25,12 @@ const Feed = () => {
   }
 
   useEffect(()=>{
-    getFeed();
-  },[])
+    if(userData){  // Only fetch feed if user is logged in
+      getFeed();
+    }
+  },[userData])
+
+  if(!userData) return <><AboutPage/></>; // Not logged in → show nothing / redirect elsewhere
 
 if(!feed) return;
 

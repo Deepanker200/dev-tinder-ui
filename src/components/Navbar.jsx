@@ -19,7 +19,7 @@ const Navbar = () => {
         { withCredentials: true }
       )
       dispatch(removeUser());
-      return navigate('/login')
+  window.location.reload(); // <-- this reloads the entire app
 
     } catch (err) {
       //Error logic

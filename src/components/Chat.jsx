@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { createSocketConnection } from '../utils/socket';
 import { useSelector } from 'react-redux';
@@ -8,7 +8,7 @@ import { BASE_URL } from '../utils/constants';
 const Chat = () => {
 
     const { targetUserId } = useParams();
-    console.log(targetUserId);
+    // console.log(targetUserId);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
 
@@ -19,7 +19,7 @@ const Chat = () => {
         const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
             withCredentials: true
         })
-        console.log(chat.data.messages);
+        // console.log(chat.data.messages);
         const chatMessages = chat?.data?.messages.map(msg => {
 
             const { senderId, text, createdAt } = msg;
@@ -71,23 +71,35 @@ const Chat = () => {
 
 
     const formatToIST = (utcDate) => {
-  if (!utcDate) return "";
-  const date = new Date(utcDate);
-  return date.toLocaleString("en-IN", {
-    timeZone: "Asia/Kolkata",
-    hour12: true,   // AM/PM format
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
-};
+        if (!utcDate) return "";
+        const date = new Date(utcDate);
+        return date.toLocaleString("en-IN", {
+            timeZone: "Asia/Kolkata",
+            hour12: true,   // AM/PM format
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+    };
+
+
+    const scrollContainerRef = useRef(null);
+
+    const scrollToBottom = () => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+        }
+    };
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
 
     return (
         <div className='w-[350px] md:w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col'>
             <h1 className='p-5 border-b border-gray-600'>Chat</h1>
-            <div className='flex-1 overflow-scroll p-5'>
+            <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef}>
                 {messages.map((msg, index) => {
                     return (
                         <div key={index} className={"chat " +
@@ -107,6 +119,12 @@ const Chat = () => {
                 <input
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                            e.preventDefault(); // prevent newline if using textarea
+                            sendMessage();
+                        }
+                    }}
                     className='flex-1 border border-gray-500 text-white rounded p-2'></input>
                 <button onClick={sendMessage} className='btn btn-secondary'>Send</button>
             </div>

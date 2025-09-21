@@ -9,6 +9,8 @@ import Connections from "./components/Connections"
 import Requests from "./components/Requests"
 import Premium from "./components/Premium"
 import Chat from "./components/Chat"
+import NotFound from "./components/NotFound"
+import ForgetPassword from "./components/ForgetPassword"
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/premium" element={<Premium />} />
               <Route path="/chat/:targetUserId" element={<Chat />} />
+              <Route path="/forget-password" element={<ForgetPassword />} />
+              <Route path="/*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>
