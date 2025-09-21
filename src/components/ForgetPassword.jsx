@@ -62,7 +62,7 @@ const ForgetPassword = () => {
                                         value={oldPassword}
                                         onChange={(e) => { setOldPassword(e.target.value) }}
                                         className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-0" />
-                                    <FontAwesomeIcon icon={setSeeOldPassword ? faEyeSlash : faEye} className='px-1' onClick={handleOldPassword} />
+                                    <FontAwesomeIcon icon={seeOldPassword ? faEyeSlash : faEye} className='px-1' onClick={handleOldPassword} />
 
                                 </div>
                             </label>
@@ -77,7 +77,7 @@ const ForgetPassword = () => {
                                         value={newPassword}
                                         onChange={(e) => { setNewPassword(e.target.value) }}
                                         className="input input-bordered w-full max-w-xs focus:outline-none focus:ring-0" />
-                                    <FontAwesomeIcon icon={handleNewPassword ? faEyeSlash : faEye} className='px-1' onClick={handleNewPassword} />
+                                    <FontAwesomeIcon icon={seeNewPassword ? faEyeSlash : faEye} className='px-1' onClick={handleNewPassword} />
 
                                 </div>
                             </label>
