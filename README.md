@@ -150,3 +150,5 @@
  - Better UI/UX
  - Reset Password Route
  - Home Page
+
+ # DevTinder Backend Link: https://github.com/Deepanker200/dev-tinder
