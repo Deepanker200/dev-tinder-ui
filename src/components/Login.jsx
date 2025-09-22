@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faEyeSlash, faLock, faUser, faUserSecret, faEye } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
+    
+    const userDetails=useSelector((store)=>store.user);
 
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
@@ -58,6 +60,8 @@ const Login = () => {
     const handlePassword=()=>{
         setSeePassword(!seePassword)
     }
+
+    if (userDetails) return navigate("/");
 
     return (
     <>
