@@ -36,7 +36,7 @@ if(!feed) return;
 
 if(feed.length<=0) return <><h1 className='text-2xl md:text-4xl text-center font-bold my-40'>No New Users Found!</h1></>
   return (
-    (feed && <div className='flex justify-center my-10'>
+    (feed && <div className='flex justify-center mt-28 mb-10'>
       <UserCard user={feed[0]}/>
     </div>)
   )

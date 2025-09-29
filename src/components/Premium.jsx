@@ -59,7 +59,7 @@ const Premium = () => {
     return isUserPremium ? (
         <h1 className='text-2xl md:text-4xl text-center font-bold my-40'>Hurray! You are already a premium user ✅</h1>
     ) : (
-        <div className='m-10'>
+        <div className='m-10 mt-28'>
             <div className="block md:flex w-full">
                 <div className="card bg-base-300 rounded-box h-80 grid grow place-items-center p-10 gap-3">
                     <h1 className='font-bold text-3xl'>Silver Membership</h1>

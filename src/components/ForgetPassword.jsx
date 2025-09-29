@@ -46,7 +46,7 @@ const ForgetPassword = () => {
                     </div>
                 </div>
             }
-            <div className='flex justify-center my-10 mx-8'>
+            <div className='flex justify-center mt-28 mb-10 mx-8'>
                 <div className="card card-border bg-base-300 w-96">
                     <div className='card-body'>
                         <div className="card-body">

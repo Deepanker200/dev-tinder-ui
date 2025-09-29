@@ -42,7 +42,7 @@ const Requests = () => {
     if (requests.length == 0) return <h1 className='text-2xl md:text-4xl text-center font-bold my-40'>No New Request Found!</h1>
 
     return (
-        <div className='text-center my-10'>
+        <div className='text-center mt-20 mb-10'>
             <h1 className='text-bold text-2xl md:text-4xl text-white mb-6 font-bold'>Connection Requests</h1>
             {requests.map((request) => {
 

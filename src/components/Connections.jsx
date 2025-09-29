@@ -45,7 +45,7 @@ const Connections = () => {
     // console.log(connections);
 
     return (
-        <div className='text-center my-10'>
+        <div className='text-center mt-20 mb-10'>
             <h1 className='text-2xl md:text-4xl text-center font-bold'>Connections</h1>
            
                     {connections.map((connection) => {
