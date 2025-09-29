@@ -97,7 +97,7 @@ const Chat = () => {
     }, [messages]);
 
     return (
-        <div className='w-[350px] md:w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col mt-28'>
+        <div className='w-[350px] md:w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col mt-28 rounded-lg'>
             <h1 className='p-5 border-b border-gray-600'>Chat</h1>
             <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef}>
                 {messages.map((msg, index) => {

@@ -29,7 +29,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-base-300 shadow-sm fixed top-0 z-10">
+    <div className="navbar bg-base-300  fixed top-0 z-10 shadow-[1px_1px_1px_1px_#0000ff6b]">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">🧑‍💻DevTinder</Link>
       </div>
