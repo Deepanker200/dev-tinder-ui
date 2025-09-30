@@ -61,7 +61,7 @@ const Login = () => {
         setSeePassword(!seePassword)
     }
 
-    if (userDetails) return navigate("/");
+    // if (userDetails) return navigate("/");
 
     return (
     <>
