@@ -47,28 +47,29 @@ const Connections = () => {
     return (
         <div className='text-center mt-20 mb-10'>
             <h1 className='text-2xl md:text-4xl text-center font-bold'>Connections</h1>
-           
-                    {connections.map((connection) => {
 
-                        const { _id, firstName, lastName, photoUrl, about, age, gender } = connection;
+            {connections.map((connection) => {
+                if (!connection) return null; // skip if null
 
-                        return (
+                const { _id, firstName, lastName, photoUrl, about, age, gender } = connection;
+
+                return (
                     <div key={_id} className='flex justify-between items-center p-2 md:p-4 rounded-lg bg-base-300 w-[350px] md:w-2/3 mx-auto my-10'>
-                                <div>
-                                    <img alt='photo' src={photoUrl} className='max-w-full h-auto md:w-20 md:h-20 rounded-full' />
-                                </div>
+                        <div>
+                            <img alt='photo' src={photoUrl} className='max-w-full h-auto md:w-20 md:h-20 rounded-full' />
+                        </div>
 
-                                <div className='text-start mx-4'>
-                                    <h2 className='font-bold text-xl'>{firstName + " " + lastName}</h2>
-                                    {age && gender && <p>{age + " " + gender}</p>}
-                                    <p className='w-[100px] md:w-[600px] line-clamp-3'>{about}</p>
-                                </div>
-                                <Link to={"/chat/" + _id}>
-                                    <button className='btn btn-primary'>Chat</button>
-                                </Link>
-                            </div>
-                        )
-                    })}
+                        <div className='text-start mx-4'>
+                            <h2 className='font-bold text-xl'>{firstName + " " + lastName}</h2>
+                            {age && gender && <p>{age + " " + gender}</p>}
+                            <p className='w-[100px] md:w-[600px] line-clamp-3'>{about}</p>
+                        </div>
+                        <Link to={"/chat/" + _id}>
+                            <button className='btn btn-primary'>Chat</button>
+                        </Link>
+                    </div>
+                )
+            })}
         </div>
     )
 }

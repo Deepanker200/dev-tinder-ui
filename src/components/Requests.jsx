@@ -45,6 +45,7 @@ const Requests = () => {
         <div className='text-center mt-20 mb-10'>
             <h1 className='text-bold text-2xl md:text-4xl text-white mb-6 font-bold'>Connection Requests</h1>
             {requests.map((request) => {
+    if (!request.fromUserId) return null; // skip if null
 
                 const { _id, firstName, lastName, photoUrl, about, age, gender } = request.fromUserId;
 
