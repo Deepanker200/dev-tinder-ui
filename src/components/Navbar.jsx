@@ -1,5 +1,4 @@
 import axios from 'axios';
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
@@ -8,23 +7,23 @@ import { removeUser } from '../utils/userSlice';
 const Navbar = () => {
 
   const user = useSelector(store => store.user);
-  const dispatch=useDispatch();
-  const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // console.log(user);
 
   const handleLogout = async () => {
-    try { 
+    try {
       await axios.post(BASE_URL + "/logout",
         {},
         { withCredentials: true }
       )
       dispatch(removeUser());
-  window.location.reload(); // <-- this reloads the entire app
+      window.location.reload(); // <-- this reloads the entire app
 
     } catch (err) {
       //Error logic
       console.log(err);
-      
+
     }
   }
 
@@ -36,7 +35,7 @@ const Navbar = () => {
       <div className="flex gap-2">
         {user && (
           <div className='flex items-center'>
-            <div className='form-control'> <p className='hover:underline font-semibold' style={{ textDecorationColor: "blue" }}>Welcome, {(user.isPremium)?`${user.firstName[0]}✅`:`${user.firstName[0]}`}</p></div>
+            <div className='form-control'> <p className='hover:underline font-semibold' style={{ textDecorationColor: "blue" }}>Welcome, {(user.isPremium) ? `${user.firstName[0]}✅` : `${user.firstName[0]}`}</p></div>
             <div className="dropdown dropdown-end mx-5">
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
