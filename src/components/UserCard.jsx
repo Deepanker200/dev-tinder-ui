@@ -6,6 +6,8 @@ import { removeUserFromFeed } from "../utils/feedSlice"
 
 const UserCard = ({ user }) => {
     const { _id, firstName, lastName, photoUrl, age, gender, about, skills, isEdit } = user;
+    // console.log(photoUrl);
+    
     const [showToast, setShowToast] = useState(false);
     const [messageToast, setMessageToast] = useState()
 
