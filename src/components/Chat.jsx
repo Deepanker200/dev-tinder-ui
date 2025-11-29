@@ -98,14 +98,16 @@ const Chat = () => {
 
     return (
         <div className='w-[350px] md:w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col mt-28 rounded-lg'>
-            <h1 className='p-5 border-b border-gray-600'>Chat</h1>
-            <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef}>
+            <h1 className='p-5 border-b border-gray-600 font-bold text-xl'>Chat</h1>
+            <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef} 
+            style={{ backgroundImage: `linear-gradient(rgba(0,0,255,26%), rgba(75,0,0,49%)),
+                    url("https://static.whatsapp.net/rsrc.php/v4/yq/r/MHVytaGe3gh.png")`}}>
                 {messages.map((msg, index) => {
                     return (
                         <div key={index} className={"chat " +
                             (user.firstName === msg.firstName ? "chat-end" : "chat-start")
                         }>
-                            <div className="chat-header">
+                            <div className="chat-header font-bold">
                                 {`${msg.firstName} ${msg.lastName}`}
                                 <time className="text-xs opacity-50">{formatToIST(msg.createdAt)}</time>
                             </div>
