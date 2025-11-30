@@ -11,16 +11,21 @@ const Chat = () => {
     // console.log(targetUserId);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
+    const [receiverName, setReceiverName] = useState("")
 
     const user = useSelector(store => store.user);
     const userId = user?._id;
 
     const fetchChatMessages = async () => {
-        const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
+        const chats = await axios.get(BASE_URL + "/chat/" + targetUserId, {
             withCredentials: true
         })
+        // console.log(chats);
+        setReceiverName(chats?.data?.connectionName?.firstName);
+
         // console.log(chat.data.messages);
-        const chatMessages = chat?.data?.messages.map(msg => {
+
+        const chatMessages = chats?.data?.chat?.messages.map(msg => {
 
             const { senderId, text, createdAt } = msg;
 
@@ -28,7 +33,7 @@ const Chat = () => {
                 firstName: senderId?.firstName,
                 lastName: senderId?.lastName,
                 text,
-                createdAt
+                createdAt,
             }
         })
         setMessages(chatMessages)
@@ -69,7 +74,6 @@ const Chat = () => {
     }
 
 
-
     const formatToIST = (utcDate) => {
         if (!utcDate) return "";
         const date = new Date(utcDate);
@@ -98,9 +102,10 @@ const Chat = () => {
 
     return (
         <div className='w-[350px] md:w-3/4 mx-auto border border-gray-600 m-5 h-[70vh] flex flex-col mt-28 rounded-lg'>
-            <h1 className='p-5 border-b border-gray-600 font-bold text-xl'>Chat</h1>
-            <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef} 
-            style={{ backgroundImage: `linear-gradient(rgba(0,0,255,26%), rgba(75,0,0,49%)),
+            <h1 className='p-5  font-bold text-xl bg-white text-black rounded-t-lg'>Chat with {receiverName}</h1>
+            <div className='flex-1 overflow-scroll p-5' ref={scrollContainerRef}
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0,0,255,26%), rgba(75,0,0,49%)),
                     url("https://static.whatsapp.net/rsrc.php/v4/yq/r/MHVytaGe3gh.png")`}}>
                 {messages.map((msg, index) => {
                     return (
