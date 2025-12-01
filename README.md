@@ -144,6 +144,7 @@
     - Initialize the chat
     - createSocketConnection
     - Listen to events
+    - Added background image and color in chat layout
 
 # Features to be added
  - Search Profile
