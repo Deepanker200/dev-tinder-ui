@@ -151,5 +151,6 @@
  - Better UI/UX
  - Reset Password Route
  - Home Page
+ - Added Whatsapp background image
 
  # DevTinder Backend Link: https://github.com/Deepanker200/dev-tinder
