@@ -33,7 +33,7 @@ const UserCard = ({ user }) => {
                 setShowToast(false)
             }, 3000)
         } catch (err) {
-            console.err(err)
+            console.error(err)
         }
     }
 
