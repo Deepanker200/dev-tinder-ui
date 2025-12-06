@@ -153,4 +153,7 @@
  - Home Page
  - Added Whatsapp background image
 
+# Extra Addons
+ - Asia/Pacific timezone added while setting cron job 
+
  # DevTinder Backend Link: https://github.com/Deepanker200/dev-tinder
