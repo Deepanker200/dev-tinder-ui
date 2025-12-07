@@ -154,6 +154,7 @@
  - Added Whatsapp background image
 
 # Extra Addons
- - Asia/Pacific timezone added while setting cron job 
+ - Asia/Pacific timezone added while setting cron job
+ - 200 emails send per day through free account 
 
  # DevTinder Backend Link: https://github.com/Deepanker200/dev-tinder
