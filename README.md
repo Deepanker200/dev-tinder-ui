@@ -60,6 +60,7 @@
 - Backend
     - Updated DB PAssword
     - Allowed EC2 instance public IP on mongodb server
+    - Add port number in AWS for Backend
     - npm install pm2 -g
     - npm start npm -- start
     - pm2 logs ~ for checking logs
@@ -91,7 +92,7 @@
 - signup on cloudflare & add a new domain name
 - change the nameservers on godaddy and point it to cloudflare
 - wait for sometime till your nameservers are updated ~15 minutes
-- DNS record: A devtinder.in our port given by AWS
+- DNS record: A devtinder-project.site our port given by AWS
 - Enable SSL for website 
 
 # Sending Emails via SES
