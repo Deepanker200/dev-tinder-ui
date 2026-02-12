@@ -108,6 +108,10 @@
 - Write code for Sending email address(using github docs)
 - Make the email dynamic by passing more params to the run function
 
+# Note: Add dotenv package and use it for .env file
+- At Backend, we use process.env
+- At Frontend, we use constants
+
 # Scheduling cron jobs in NodeJS
     - Installing node-cron
     - Learning about cron expressions syntax- crontab.guru
