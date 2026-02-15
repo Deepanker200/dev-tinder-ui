@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 
 const Premium = () => {
+    const [loading, setLoading] = useState(true);
 
     const [isUserPremium, setIsUserPremium] = useState(false);
     useEffect(() => {
@@ -11,14 +12,20 @@ const Premium = () => {
     }, []);
 
     const verifyPremiumUser = async () => {
-        const res = await axios.get(BASE_URL + "/premium/verify", {
-            withCredentials: true
-        });
+        try {
+            const res = await axios.get(BASE_URL + "/premium/verify", {
+                withCredentials: true
+            });
 
-        if (res.data.isPremium) {
-            setIsUserPremium(true)
+            if (res.data.isPremium) {
+                setIsUserPremium(true);
+            }
+        } catch (err) {
+            console.error("Error verifying premium:", err);
+        } finally {
+            setLoading(false);
         }
-    }
+    };
 
 
     const handleBuyClick = async (type) => {
@@ -55,6 +62,15 @@ const Premium = () => {
         const rzp = new window.Razorpay(options);
         rzp.open()
     }
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <span className="loading loading-spinner loading-lg"></span>
+            </div>
+        );
+    }
+
 
     return isUserPremium ? (
         <h1 className='text-2xl md:text-4xl text-center font-bold my-40'>Hurray! You are already a premium user ✅</h1>
